@@ -1,0 +1,43 @@
+[package]
+categories  = { workspace = true }
+description = "Implementation of trait queries for the bevy game engine"
+edition     = { workspace = true }
+keywords    = { workspace = true }
+license     = { workspace = true }
+name        = "bevy-trait-query"
+repository  = { workspace = true }
+version     = "0.18.0"
+
+[features]
+default = ["bevy_app"]
+trace = ["dep:tracing"]
+
+[dependencies]
+bevy-trait-query-impl = { workspace = true }
+bevy_app              = { default-features = false, optional = true, workspace = true }
+bevy_ecs              = { default-features = false, workspace = true }
+tracing               = { default-features = false, optional = true, workspace = true }
+
+[dev-dependencies]
+bevy      = { default-features = false, workspace = true }
+criterion = { workspace = true }
+
+[[bench]]
+harness = false
+name    = "concrete"
+path    = "../benches/concrete.rs"
+
+[[bench]]
+harness = false
+name    = "all"
+path    = "../benches/all.rs"
+
+[[bench]]
+harness = false
+name    = "one"
+path    = "../benches/one.rs"
+
+[[bench]]
+harness = false
+name    = "fragmented"
+path    = "../benches/fragmented.rs"
